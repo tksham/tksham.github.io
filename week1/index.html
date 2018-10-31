@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <style>
+        body {
+            font-family: Helvetica, sans-serif;
+        }
+        #video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            margin: auto;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: block;
+        }
+        #image-wrapper{
+            position: absolute;
+            height:30vh;
+            width:100vw;
+            top:40%;
+        }
+        #image{
+            height:100%;            
+            margin:0 auto;
+            display: block;
+            transform: translate3d(calc(var(--mouse-x, 0) * -15%),calc(var(--mouse-y, 0) * -15%),0);
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            position: relative;
+        }
+        #fix{
+            position:fixed;
+            right:2%;
+            bottom:5%;
+            padding:15px;
+            background:#55a8f7;
+            border-radius: 15px;
+            color:#FFF;
+            text-decoration: none;
+            
+        }
+        </style>
+        <script>
+            const root = document.documentElement;        
+            document.addEventListener('mousemove', evt => {
+                let x = evt.clientX / innerWidth;
+                let y = evt.clientY / innerHeight;            
+                root.style.setProperty('--mouse-x', x);
+                root.style.setProperty('--mouse-y', y);
+            });
+        </script>
+    </head>
+    <body>
+        <video id="video" src="bg.mp4" autoplay="" muted="" loop=""></video>
+        <div id="image-wrapper">
+            <img id="image" src="main_fin.png"/>
+        </div>
+        <a id="fix" href="http://corona-sunsets.jp/">Original inspiration: corona-sunsets.jp</a>
+    </body>
+</html>
